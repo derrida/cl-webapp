@@ -2,5 +2,4 @@
 
 (in-package :dungeon-tool)
 
-(defun open-db (&key (file))
-  (setf *database* (open-store '(:clsql (:sqlite3 :file)))))
+(setf *store* (open-store '(:clsql (:sqlite3 "/tmp/dungeon-tool.db"))))
