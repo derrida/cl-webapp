@@ -4,14 +4,12 @@
 
 ;;; page initialization
 
-;; define a page to be registered
-(defmacro define-page ((name) &body body)
-  `(progn
-     (defun ,name ()
-       ,@body)
-     (push (create-regex-dispatcher
-             ,(format nil "^/~(~a~)$" name)
-             ',name) *dispatch-table*))) 
+(defun map-routes ()
+  (setq *dispatch-table*
+        (list
+          (create-regex-dispatcher "^/characters$" 'page-character-list)
+          (create-regex-dispatcher "^/characters/new$" 'page-character-new)
+          (create-regex-dispatcher "^/characters/add" 'page-character-add))))
 
 ;;; page generators
 
