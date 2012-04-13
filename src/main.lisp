@@ -7,5 +7,8 @@
 (define-page (characters/add) (page-character-add))
 
 (defun main ()
+  ;; open the database.
+  (open-db)
+
   ;; start the web server.
   (start-server :port 8080))
