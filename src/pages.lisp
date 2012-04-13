@@ -22,8 +22,8 @@
       (:head
         (:meta :http-equiv "Content-Type" :content "text/html;charset=utf-8")
         (:title ,title)
-        (:link :type "text/css" :rel "stylesheet" :href "/style.css"))
+        (:link :type "text/css" :rel "stylesheet" :href "/css/site.css"))
       (:body
         (:div :id "header"
-         (:img :src "/logo.png" :alt "Logo" :class "logo"))
+         (:img :src "/images/logo.png" :alt "Logo" :class "logo"))
         ,@body))))
