@@ -1,4 +1,5 @@
 ;;;; package.lisp
 
 (defpackage #:dungeon-tool
-  (:use :cl :hunchentoot :cl-who :parenscript :elephant))
+  (:use :cl :hunchentoot :elephant :cl-who :parenscript)
+  (:import-from :css-lite :css))

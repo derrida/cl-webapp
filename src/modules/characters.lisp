@@ -34,6 +34,17 @@
       (add-character name))
     (redirect "/characters")))
 
+(defun page-css ()
+  (setf (content-type* *reply*) "text/css")
+  (css-lite:css
+    (("body")
+     (:width "50%"
+      :margin "0 auto"
+      :font-family "sans-seri"))
+    (("#header")
+     (:background-color "#437ea7"
+      :padding "8px"))))
+
 ;;; character object definition
 
 (defpclass game-character ()

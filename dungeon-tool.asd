@@ -4,7 +4,7 @@
   :name "Dungeon Tool"
   :author "Michael Fiano <axedcode@gmail.com>"
   :description "Tool for Dungeon Masters to manage running a game of D&D"
-  :depends-on (:hunchentoot :cl-who :parenscript :elephant)
+  :depends-on (:hunchentoot :elephant :cl-who :css-lite :parenscript)
   :components
     ((:module src
               :serial t

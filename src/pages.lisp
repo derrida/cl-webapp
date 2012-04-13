@@ -7,6 +7,7 @@
 (defun map-routes ()
   (setq *dispatch-table*
         (list
+          (create-regex-dispatcher "^/css/site.css" 'page-css)
           (create-regex-dispatcher "^/characters$" 'page-character-list)
           (create-regex-dispatcher "^/characters/new$" 'page-character-new)
           (create-regex-dispatcher "^/characters/add" 'page-character-add))))
