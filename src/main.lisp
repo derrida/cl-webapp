@@ -9,5 +9,5 @@
   ;; start the web server.
   (start-server :port 8080))
 
-  ;; map routes to pages
+  ;; map routes to pages.
   (map-routes)

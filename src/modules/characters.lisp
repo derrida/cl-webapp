@@ -38,7 +38,7 @@
   (setf (content-type* *reply*) "text/css")
   (css-lite:css
     (("body")
-     (:width "50%"
+     (:width "70%"
       :margin "0 auto"
       :font-family "sans-seri"))
     (("#header")
