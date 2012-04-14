@@ -10,7 +10,4 @@
   (open-db)
 
   ;; start the web server.
-  (start-server :port 8080)
-
-  ;; map routes to pages.
-  (map-routes))
+  (start-server))

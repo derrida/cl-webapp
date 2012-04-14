@@ -10,7 +10,7 @@
          :initform 8080)
    (root :accessor root
          :initarg :root
-         :initform "/")
+         :initform (get-path "site/static/"))
    (routes :accessor routes
            :initarg :routes)))
 
@@ -20,12 +20,11 @@
   "Configure the site with the data from the site.conf file."
   (let ((config-data (with-open-file (stream (get-path "site/site.conf"))
                   (read stream))))
-    (apply #'reinitialize-instance *site-config* config-data)))
+    (apply #'reinitialize-instance *site-config* config-data)
+    (map-routes)))
 
 (defun map-routes ()
-  (setq *dispatch-table*
-        (list
-          (create-regex-dispatcher "^/css/site.css" 'page-css)
-          (create-regex-dispatcher "^/characters$" 'page-character-list)
-          (create-regex-dispatcher "^/characters/new$" 'page-character-new)
-          (create-regex-dispatcher "^/characters/add$" 'page-character-add))))
+  "Register the pages defined in the site configuration."
+  (setq *dispatch-table* nil)
+  (loop for (key value) on (routes *site-config*) by #'cddr do
+        (push (create-regex-dispatcher value (intern (string key))) *dispatch-table*)))
