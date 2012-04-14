@@ -11,6 +11,7 @@
               :components
                 ((:file "package")
                  (:file "utils")
+                 (:file "site")
                  (:file "database")
                  (:file "server")
                  (:file "pages")
