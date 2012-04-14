@@ -27,4 +27,6 @@
   "Register the pages defined in the site configuration."
   (setq *dispatch-table* nil)
   (loop for (key value) on (routes *site-config*) by #'cddr do
-        (push (create-regex-dispatcher value (intern (string key))) *dispatch-table*)))
+        (let ((key (intern (string key)))
+              (value (format nil "^~(~a~)/?$" value)))
+          (push (create-regex-dispatcher value key) *dispatch-table*))))
