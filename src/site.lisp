@@ -8,7 +8,7 @@
   ((port :accessor port
          :initarg :port
          :initform 8080)
-   (root :accessor root
+   (root :reader root
          :initarg :root
          :initform (get-path "site/static/"))
    (routes :accessor routes
@@ -21,12 +21,12 @@
   (let ((config-data (with-open-file (stream (get-path "site/site.conf"))
                   (read stream))))
     (apply #'reinitialize-instance *site-config* config-data)
-    (map-routes)))
+    (map-routes (routes *site-config*))))
 
-(defun map-routes ()
+(defun map-routes (routes)
   "Register the pages defined in the site configuration."
   (setq *dispatch-table* nil)
-  (loop for (key value) on (routes *site-config*) by #'cddr do
+  (loop for (key value) on routes by #'cddr do
         (let ((key (intern (string key)))
               (value (format nil "^~(~a~)/?$" value)))
           (push (create-regex-dispatcher value key) *dispatch-table*))))
