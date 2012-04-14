@@ -14,7 +14,7 @@
                  (:file "site")
                  (:file "database")
                  (:file "server")
-                 (:file "pages")
+                 (:file "documents")
                  (:module modules
                           :components
                             ((:file "characters")))

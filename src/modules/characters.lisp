@@ -6,7 +6,7 @@
 
 (defun page-character-list ()
   "Page listing every character."
-  (standard-page
+  (page-site
     (:title "Character List")
     (:h1 "Characters")
     (:p
@@ -18,7 +18,7 @@
 
 (defun page-character-new ()
   "Page for creating a new character."
-  (standard-page
+  (page-site
     (:title "New Character")
     (:h1 "Create a new character")
     (:form :action "/characters/add" :method "post"
@@ -33,17 +33,6 @@
     (unless (or (null name) (zerop (length name)))
       (add-character name))
     (redirect "/characters")))
-
-(defun page-css ()
-  (setf (content-type* *reply*) "text/css")
-  (css-lite:css
-    (("body")
-     (:width "70%"
-      :margin "0 auto"
-      :font-family "sans-seri"))
-    (("#header")
-     (:background-color "#437ea7"
-      :padding "8px"))))
 
 ;;; character object definition
 
