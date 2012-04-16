@@ -2,6 +2,18 @@
 
 (in-package :dungeon-tool)
 
+;;; module definition
+
+(defclass :module-characters ()
+  ((name :reader name
+         :initform "characters")
+   (mount :reader mount
+          :initarg :mount)
+   (routes :reader routes
+           :initform '(:page-character-list ""
+                       :page-character-add "/add"
+                       :page-character-new "/new"))))
+ 
 ;;; web page definitions
 
 (defun page-character-list ()
