@@ -47,6 +47,10 @@
 (defun find-module (name)
   (find name *site-modules* :test #'string-equal :key #'name))
 
+(defun module-link (module path)
+  (let ((mount (mount (find-module module))))
+    (format nil "~(~a~)/~(~a~)" mount path)))
+
 (defun register-modules (module-config)
   "Register the modules defined in the site configuration."
   (loop for (module mount) on module-config by #'cddr do

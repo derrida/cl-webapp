@@ -16,10 +16,6 @@
  
 ;;; web page definitions
 
-(defun module-link (module path)
-  (let ((mount (mount (find-module module))))
-    (format nil "~(~a~)/~(~a~)" mount path)))
-
 (defun page-character-list ()
   "Page listing every character."
   (page-site
