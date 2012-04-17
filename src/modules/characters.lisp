@@ -16,13 +16,17 @@
  
 ;;; web page definitions
 
+(defun module-link (module path)
+  (let ((mount (mount (find-module module))))
+    (format nil "~(~a~)/~(~a~)" mount path)))
+
 (defun page-character-list ()
   "Page listing every character."
   (page-site
     (:title "Character List")
     (:h1 "Characters")
     (:p
-      (:a :href "/characters/new" "New Character"))
+      (:a :href (module-link "characters" "new") "New Character"))
     (dolist (c (character-list))
       (htm
         (:li
